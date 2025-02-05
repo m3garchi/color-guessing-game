@@ -172,10 +172,10 @@ body {
 }
 .copyright {
   position: absolute;
-  bottom: 18px;
-  left: 0;
+  bottom: 24px;
+  right: 24px;
   width: 100%;
-  text-align: center;
+  text-align: right;
   color: #a0a0b0;
   font-size: 14px;
 }
@@ -237,7 +237,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Centering Feedback Marks */
+/* Feedback Marks */
 .feedback-mark {
   position: absolute;
   top: 50%;
@@ -343,7 +343,7 @@ p {
 
 #playAgainButton,
 #tryAgainButton {
-  padding: 12px 24px;
+  padding: 16px 24px;
   font-size: 18px;
   border: none;
   border-radius: 36px;
@@ -417,8 +417,8 @@ p {
   .victory-screen,
   .game-over-screen {
     padding: 24px;
+    margin-top: 32px;
   }
-  
   .welcome-heading {
     font-size: 32px;
   }

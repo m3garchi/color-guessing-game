@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (guess === targetColor) {
             score++;
             scoreElement.textContent = `${score}/${maxScore}`;
-            gameStatus.textContent = 'Correct!';
+            gameStatus.textContent = 'Correct!🎉';
+            gameStatus.style.color = 'green'; 
             showFeedback(true);
             if (score === maxScore) {
                 victoryScreen.classList.remove('hidden');
@@ -76,7 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             life--;
             lifeElement.textContent = '❤️'.repeat(life);
-            gameStatus.textContent = 'Wrong! Try again.';
+            gameStatus.textContent = 'Wrong! Try again.😢';
+            gameStatus.style.color = 'red'; 
             showFeedback(false);
             if (life === 0) {
                 gameOverScreen.classList.remove('hidden');
