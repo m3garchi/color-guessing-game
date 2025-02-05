@@ -1,0 +1,443 @@
+body {
+  margin: 0px;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #080B2A;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff; /* White text for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;    
+}
+/* Floating Squares Background */
+.floating-squares {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+  
+.square {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(45deg, rgba(83, 56, 158, 0.1), rgba(96, 85, 255, 0.1));
+  border-radius: 16px;
+  transform: rotate(45deg);
+}
+  
+.square:nth-child(1) { top: 10%; left: 10%; animation: float 20s infinite; }
+.square:nth-child(2) { top: 40%; right: 10%; animation: float 25s infinite; }
+.square:nth-child(3) { bottom: 10%; left: 20%; animation: float 22s infinite; }
+.square:nth-child(4) { bottom: 30%; right: 20%; animation: float 28s infinite; }
+  
+@keyframes float {
+  0%, 100% {
+    transform: rotate(45deg) translate(0, 0);
+  }
+  25% {
+    transform: rotate(45deg) translate(20px, 20px);
+  }
+  50% {
+    transform: rotate(45deg) translate(0, 40px);
+  }
+  75% {
+    transform: rotate(45deg) translate(-20px, 20px);
+  }
+}
+/* Game Logo */
+.game-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
+.game-logo img {
+  width: 40px;
+  height: 40px;
+}
+.game-logo span {
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(45deg, #5dc5ff, #ae8eff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-emphasis-color: transparent;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* Welcome Screen */
+.welcome-screen {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 48px;
+  max-width: 600px;
+  width: 90%;
+  margin: 20px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+  
+.welcome-title {
+  color: #5dc5ff;
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+  
+.welcome-heading {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+  line-height: 1.2;
+  text-decoration-color: #ffffff;
+
+}
+  
+.instructions {
+  color: #a0a0b0;
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+  
+.instruction-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+  
+.instruction-list li {
+  color: #a0a0b0;
+  font-size: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+  
+.instruction-list li::before {
+  content: "•";
+  color: #5dc5ff;
+  font-size: 24px;
+}
+#startGameButton {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 36px;
+  background: linear-gradient(45deg, #35c3f5, #5243fc);
+  color: #ffffff; /* White text */
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+  
+#startGameButton::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #35c3f5, #5243fc);
+  z-index: -1;
+  border-radius: 36px;
+  animation: rotateBorder 2s linear infinite;
+}
+
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  
+#startGameButton:hover {
+  transform: scale(1.05);
+}
+.fa-play {
+  color: #ffffff;
+  padding-right: 8px;
+}
+.copyright {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #a0a0b0;
+  font-size: 14px;
+}
+/* Game Container */
+.game-container {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+  
+.hidden {
+  display: none;
+}
+  
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.score {
+  font-size: 18px;
+}
+  
+.life {
+  display: flex;
+  gap: 5px;
+}
+.color-box {
+  width: 200px;
+  height: 200px;
+  margin: 24px auto;
+  border-radius: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.color-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.color-options button {
+  width: 100%;
+  height: 60px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.color-options button:hover {
+  transform: scale(1.05);
+}
+
+/* Centering Feedback Marks */
+.feedback-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feedback-mark.visible {
+  opacity: 1;
+}
+
+.check-mark {
+  color: #4CAF50; /* Green for correct */
+}
+
+.x-mark {
+  color: #f44336; /* Red for wrong */
+}
+  
+button[data-testid="newGameButton"] {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 36px;
+  background: linear-gradient(45deg, #35c3f5, #5243fc);
+  color: #ffffff; /* White text */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+  
+button[data-testid="newGameButton"]::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #35c3f5, #5243fc);
+  z-index: -1;
+  border-radius: 36px;
+  animation: rotateBorder 2s linear infinite;
+}
+  
+button[data-testid="newGameButton"]:hover {
+  transform: scale(1.05);
+}
+  
+p {
+  font-size: 18px;
+  margin: 10px 0px;
+  color: #ffffff; /* White text */
+}
+
+  
+/* Flash Animations */
+@keyframes flashCorrect {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+  50% { box-shadow: 0 0 0 20px rgba(76, 175, 80, 0.3); }
+}
+  
+@keyframes flashWrong {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0); }
+  50% { box-shadow: 0 0 0 20px rgba(244, 67, 54, 0.3); }
+}
+  
+.flash-correct {
+  animation: flashCorrect 0.5s ease-out;
+}
+  
+.flash-wrong {
+  animation: flashWrong 0.5s ease-out;
+}
+/* Victory Screen Styling */
+.victory-screen,
+.game-over-screen {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  padding: 20px;
+  border-radius: 36px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px); /* Adds a blur effect */
+  z-index: 1;
+}
+
+.victory-screen h1,
+.game-over-screen h1 {
+  color: #ffd700; /* Gold color for the heading */
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.victory-screen p,
+.game-over-screen p {
+  font-size: 18px;
+  color: #ffffff; /* White text */
+}
+
+#playAgainButton,
+#tryAgainButton {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 36px;
+  background: linear-gradient(45deg, #35c3f5, #5243fc);
+  color: #ffffff; /* White text */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#playAgainButton::before,
+#tryAgainButton::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #35c3f5, #5243fc);
+  z-index: -1;
+  border-radius: 36px;
+  animation: rotateBorder 2s linear infinite;
+}
+
+#playAgainButton:hover,
+#tryAgainButton:hover {
+  transform: scale(1.05);
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcome-screen,
+  .game-container,
+  .victory-screen,
+  .game-over-screen {
+    padding: 32px;
+    margin: 16px;
+  }
+  
+  .welcome-heading {
+    font-size: 36px;
+  }
+  
+  .game-logo {
+    top: 16px;
+    left: 16px;
+  }
+  
+  .game-logo img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .game-logo span {
+    font-size: 20px;
+  }
+  
+  .color-box {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .color-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  
+@media (max-width: 480px) {
+  .welcome-screen,
+  .game-container,
+  .victory-screen,
+  .game-over-screen {
+    padding: 24px;
+  }
+  
+  .welcome-heading {
+    font-size: 32px;
+  }
+  
+  .instructions {
+    font-size: 16px;
+  }
+  
+  .instruction-list li {
+    font-size: 14px;
+  }
+  
+  #startGameButton {
+    padding: 14px 32px;
+    font-size: 16px;
+  }
+  
+  .color-box {
+    width: 120px;
+    height: 120px;
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Color Guessing Game</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!-- Floating Squares Background -->
+        <div class="floating-squares">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <!-- Game Logo -->
+        <div class="game-logo">
+            <img src="/image/logo.png" alt="Game.io Logo">
+            <span>Game.io</span>
+        </div>
+        <!-- Welcome Screen -->
+        <div class="welcome-screen" data-testid="welcomeScreen">
+            <div class="welcome-title">Hello Human!👋</div>
+            <h1 class="welcome-heading">Welcome to the Color Guessing Game!</h1>
+            <p class="instructions">Can you guess the correct color? Here's how to play:</p>
+            <ul class="instruction-list">
+                <li>Look at the color box and try to find the matching color below</li>
+                <li>Click on the color you think matches the box</li>
+                <li>You have 3 trials to guess the correct color</li>
+                <li>If you're right, you'll earn a point</li>
+                <li>If you're wrong, you'll lose a trial</li>
+            </ul>
+            <button id="startGameButton">
+                <i class="fas fa-play"></i>
+                START GAME
+            </button>
+        </div>
+        <!-- Game Container (Initially Hidden) -->
+        <div class="game-container hidden">
+            <div class="top-bar">
+                <div class="score">
+                    Score:
+                    <span data-testid="score">0/5</span>
+                </div>
+                <div class="life" data-testid="life">
+                    Life:
+                    <span id="life">❤️❤️❤️</span>
+                </div>
+            </div>
+            <h1>Color Guessing Game</h1>
+            <div class="color-box" data-testid="colorBox">
+                <div class="feedback-mark check-mark">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div class="feedback-mark x-mark">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <p data-testid="gameInstructions">Guess the correct color!</p>
+            <div class="color-options"></div>
+            <p data-testid="gameStatus">Make your guess!</p>
+            <button data-testid="newGameButton">New Game</button>
+        </div>
+        <!-- Victory Screen (Initially Hidden) -->
+        <div class="victory-screen hidden">
+            <h1>You Win!🏆</h1>
+            <p>Congratulations! You guessed 5 colors correctly!</p>
+            <button id="playAgainButton">Play Again</button>
+        </div>
+        <!-- Game Over Screen (Initially Hidden) -->
+        <div class="game-over-screen hidden">
+            <h1>Game Over!😢</h1>
+            <p>You ran out of trials. Better luck next time!</p>
+            <button id="tryAgainButton">Try Again</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
